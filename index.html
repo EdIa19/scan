@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRISCAN</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+/*nivel del titulo*/
+        header {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 30px;
+            text-align: left;
+        }
+
+        header {
+            background-color: #c9f5e0; /* Fondo verde */
+            color: #000000; /* Texto blanco */
+            
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+        }
+        main {
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #ffffff; /* Texto blanco */
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 3px; /* Grosor de la línea verde */
+            background-color: #00ff00; /* Color verde */
+            top: -50px; /* Espacio negativo para superponer la línea sobre el texto */
+            left: 0;
+        }
+/*nivel de redes*/
+        footer {
+            background-color: #7acd8e;
+            color: #332c2c;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilos de productos */
+        .product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.33% - 30px); /* Cambia el ancho para mostrar 3 en una fila */
+    box-sizing: border-box; /* Ajuste del ancho para incluir el borde */
+    float: left; /* Hace que los productos se muestren en línea */
+}
+
+
+        .product img {
+            width: 25%; /* Reducir el tamaño de la imagen */
+            display: block;
+            margin: 0 auto; /* Centrar la imagen */
+            margin-bottom: 10px;
+        }
+
+        /* Estilos del carrito */
+        #cart {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        #cart h2 {
+            margin-top: 0;
+        }
+
+        #cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cart ul li {
+            margin-bottom: 10px;
+        }
+
+        #cart .total {
+            font-weight: bold;
+        }
+        #company-info {
+        text-align: justify;
+    }
+   
+    nav ul li:last-child {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    font-size: 20px;
+    }
+
+    /* Estilos para el texto "Cerrado hoy" */
+.cerrado {
+    color: rgb(164, 55, 253); /* Cambia el color a rojo para "Cerrado hoy" */
+}
+/* Estilos para el texto "Abierto hoy" */
+.abierto {
+    color: rgb(0, 255, 55); /* Cambia el color a verde para "Abierto hoy" */
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NUTRISCAN</h1>
+      
+        <nav>
+            <ul>
+
+                <li><a href="#" class="category-link" data-category="Productos">Productos</a></li>
+                <li><a href="#" class="category-link" data-category="Sobre Nosotros">Sobre Nosotros</a></li>
+                <li><a href="#" class="category-link" data-category="Recursos de Salud">Recursos de Salud</a></li>
+                <li><a href="#" class="category-link" data-category="Contacto">Contacto</a></li>
+                <li><a href="#" class="category-link" data-category="Compras">👜CARRITO👜</a></li>
+            </ul>
+        </nav>
+        
+        <h3 id="company-info">En NutriScan, creemos en el poder de la alimentación para transformar vidas. ¡Y estamos emocionados de que estés aquí! Nuestra misión es simple pero poderosa: proporcionarte las herramientas y la información que necesitas para tomar el control de tu salud y bienestar a través de tus elecciones alimenticias.
+
+            Imagina tener acceso instantáneo a información detallada sobre el contenido nutricional de tus alimentos favoritos. Con NutriScan, ya no tendrás que adivinar cuántas calorías tiene ese plato que estás a punto de comer o si contiene algún alérgeno que debas evitar. Nuestra herramienta de escaneo molecular te proporciona datos precisos sobre el contenido nutricional, alergénico y de calidad de tus alimentos, todo al alcance de tu mano.
+            
+            Explora nuestras características principales, desde el escaneo instantáneo hasta la personalización de preferencias dietéticas, y descubre cómo NutriScan puede ayudarte a alcanzar tus objetivos de salud y bienestar de manera fácil y efectiva.
+            
+            Estamos aquí para apoyarte en cada paso de tu viaje hacia una alimentación más saludable. Así que únete a nosotros y comienza a tomar el control de tu salud hoy mismo. ¡Juntos, podemos lograr un cambio positivo en tu vida y en el mundo que nos rodea!</h3>
+            
+        
+       
+           
+
+    </header>
+   
+
+    <main>
+        <section id="search-results" style="display: none;">
+            <h2>Resultados de la búsqueda</h2>
+        </section>
+       
+        <section id="Productos" class="category" style="display: none;">  <input type="text" id="search-input" placeholder="Buscar productos...">
+            <h2 style="text-align: center;">Productos</h2>
+            <div class="product">
+                <p>Suplemento vitamínico diario</p>
+                <p>Precio: $200.00</p>
+                <button class="add-to-cart" data-product="Suplemento vitamínico diario">Agregar al carrito</button>
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRWsv2NvQY9VItYNhL_xhfYOqYhkQkcEJ4VEM5jTFUSPS4XZKoXBHNOyBdtZr9XZh4LoIp-2B90CtuZGCXcp-8J0biY4BSJ_CixpbMmMsHdxJHiLDcCnRGfQWMUC2lVKUBoWdFjj5U&usqp=CAc" alt="Suplemento vitamínico diario" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Cápsulas de vitaminas esenciales</p>
+                <p>Precio: $200.00</p>
+                <button class="add-to-cart" data-product="Cápsulas de vitaminas esenciales">Agregar al carrito</button>
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQSzAI8_0U4-cgtyyL-Eu2y3S-w6DEyo_hZSudLERetuKCzKYyF8PuRpkle6xhNqZwdYWlN-di0A_GUxhvNrFWr0B4rqRIyC8b-u_SQrcQ3B25iV9fJfP5t-Z5zE05U4t8UUkcWU036lu0&usqp=CAc" alt="Cápsulas de vitaminas esenciales" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento para el cabello y la piel</p>
+                <p>Precio: $250.00</p>
+                <button class="add-to-cart" data-product="Suplemento para el cabello y la piel">Agregar al carrito</button>
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQPGtPsRq37RF3LyAvWC6OPrvv4NzEwxu0X_uUda4KsUWA2RXkXkS4okHi-AcPKZZd3J1tEQtKRy5p1_laD6szOgWdcS1g7ZAykz91zAHk-n5MfVm1QUG6DRpaG6wSmLsmXvEFrFS8&usqp=CAc" alt="Suplemento para el cabello y la piel" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Vitaminas para el sistema inmunológico</p>
+                <p>Precio: $180.00</p>
+                <button class="add-to-cart" data-product="Vitaminas para el sistema inmunológico">Agregar al carrito</button>
+                <img src="data:image/webp;base64,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" alt="Vitaminas para el sistema inmunológico" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento de calcio y vitamina D</p>
+                <p>Precio: $220.00</p>
+                <button class="add-to-cart" data-product="Suplemento de calcio y vitamina D">Agregar al carrito</button>
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTFo1nj7TwI2hw0Yzjw3V_4zjnWhvPhWq0Fwfr91DP4EIhS5HK7558Pqvr1OmSOAlRm6MMEEGg95MG4B4trIqpV5xCLgBFHKES6UDgYGPwX92U1OFN1l-uOoTwQSgeLCPZ255vXc2Dk8Q&usqp=CAc" alt="Suplemento de calcio y vitamina D" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Ácido fólico para embarazadas</p>
+                <p>Precio: $190.00</p>
+                <button class="add-to-cart" data-product="Ácido fólico para embarazadas">Agregar al carrito</button>
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSasPZ2rSTaj4wstgNkoFiRrK7jGYbERBprKdQtvnmMCK3N30Ybi0-sXxHaRkFtI8LZurvFWa_7daoMW0NAdrIBAzCaobjOm1HJw8dXKAOIX0RDSzAGoTAfAw&usqp=CAE" alt="Ácido fólico para embarazadas" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento de zinc y magnesio</p>
+                <p>Precio: $210.00</p>
+                <button class="add-to-cart" data-product="Suplemento de zinc y magnesio">Agregar al carrito</button>
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTtGJER-nb10_-RaWUZaGNx2TNfy5m_y_zg0qJC5nBC2I6yT2HBABdpPF_71zX7xZg-IYg_P80m-fqsXhs1Tf5JMsw4sUPyZkJVkS_5lFw1ujrbTccqYcG8&usqp=CAE" alt="Suplemento de zinc y magnesio" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Complemento alimenticio para deportistas</p>
+                <p>Precio: $230.00</p>
+                <button class="add-to-cart" data-product="Complemento alimenticio para deportistas">Agregar al carrito</button>
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSdkW5DJV2gE3u-F8dUjKVyu0bGZH24vx8Oj9mIuRIu0z0wtOtEJHlZym5-z80XZm1tIYuk7Sz4mG2abLoUiPU-DazWqpFoiokyQz0TAx-CZBkMV_dwUAKv&usqp=CAE" alt="Complemento alimenticio para deportistas" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Vitaminas para la salud ocular</p>
+                <p>Precio: $200.00</p>
+                <button class="add-to-cart" data-product="Vitaminas para la salud ocular">Agregar al carrito</button>
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR-T-68b8ytLKQvGFm3jVMd9rp1U114awSjC0CZTmAt7YCCNO5zDLeaRgITpeBlj8t7RVMVJkLZATxKebUcU-sYz_dYmAZeYl3xpyp_3sM&usqp=CAE
+                " alt="Vitaminas para la salud ocular" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento de omega-3</p>
+                <p>Precio: $240.00</p>
+                <button class="add-to-cart" data-product="Suplemento de omega-3">Agregar al carrito</button>
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSTircxi52SjjEEr5czxj6j9ifq6ybzUyY0lBGTXvkwUdtupEDA9BT8PI37JjCdaIF80I4U-w0qWX8i6YGLg6CeH2kIu96z5x7EEkOU28Xop9YQWhS0d_TK-A&usqp=CAE" alt="Suplemento de omega-3" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Polivitamínico y minerales</p>
+                <p>Precio: $250.00</p>
+                <button class="add-to-cart" data-product="Polivitamínico y minerales">Agregar al carrito</button>
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQLGsGFd0mTvGGZf807mvSveMZ4mdBl3xhvRhT_NLGYPih6DEgiBG4GpxnP6gpLHIEuosc_r_6w-5o9PnzIFRiU1IY983ulWFsZtcnZzSJ6NR1ZSF0hhks0bw&usqp=CAE
+                " alt="Polivitamínico y minerales" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento de hierro</p>
+                <p>Precio: $220.00</p>
+                <button class="add-to-cart" data-product="Suplemento de hierro">Agregar al carrito</button>
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRg83nC4zzwaauTHanV2CZ4bZ14pUX_S9HFySJ1mnPyrQ4ZURY9jWMwS-25buG4yUInciO0vb5unbIW2ohQhAyayaQhZt-SanOkw7JWW0gHGDidCd4lFVpLgg&usqp=CAE
+                " alt="Suplemento de hierro" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Vitaminas para el cabello y las uñas</p>
+                <p>Precio: $210.00</p>
+                <button class="add-to-cart" data-product="Vitaminas para el cabello y las uñas">Agregar al carrito</button>
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQV-r__HpXVWNhpbJYaavp7L4iAdYiWhSD-3sJvW2dssgzyJiQmRLcDTCpsJuGRswKtu0lsIW-mUFOnqBXKU022vJbklrFaz8BEoHiS1_VrTJdx8CB9ffC4hQ&usqp=CAE
+                " alt="Vitaminas para el cabello y las uñas" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Suplemento de vitamina C</p>
+                <p>Precio: $190.00</p>
+                <button class="add-to-cart" data-product="Suplemento de vitamina C">Agregar al carrito</button>
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTO6xjwVmeguMasUq9G8AKMBfJlIkWDdkD-jAtFXcQ3N-RryrIqgadLIBC7oUdsrZkyq2M_34tLlX-ffgpAFJICHodDMkBpCxmJpmQEsvvplA6GDJuh6aqu&usqp=CAE
+                " alt="Suplemento de vitamina C" width="100" height="150">
+            </div>
+            <div class="product">
+                <p>Complejo de vitamina B</p>
+                <p>Precio: $180.00</p>
+                <button class="add-to-cart" data-product="Complejo de vitamina B">Agregar al carrito</button>
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTO6_rzJfEG7Gqlc488j9OkbosHmcwNkJ0EvQ4hOJxZpNvK9XP3MzJAvwHMYZ-YG9GM3vLGIi8Ppt6lN_sFADI3LfCsJTb2988koN0S9olhj9Oq8gvwpVh-fg&usqp=CAE" alt="Complejo de vitamina B" width="100" height="150">
+            </div>
+            
+            
+            
+            <button onclick="goBack()">Regresar ↩</button>
+        </section>
+        
+        
+        </section>
+        <section id="Sobre Nosotros" class="category" style="display: none;"> 
+            <h2 style="text-align: center;">Sobre Nosotros</h2>
+        
+            <p>
+                En NutriScan, estamos comprometidos con tu salud y bienestar. Nuestra historia se remonta a un grupo de apasionados por la nutrición y la tecnología que se unieron con un objetivo común: brindarte las herramientas necesarias para tomar el control de tu alimentación y mejorar tu calidad de vida.
+
+             <h3 style="text-align: center;">Nuestra Misión</h3>
+                
+                Nuestra misión es proporcionarte acceso instantáneo a información precisa y detallada sobre el contenido nutricional de los alimentos que consumes. Creemos que una alimentación saludable es fundamental para alcanzar un estilo de vida equilibrado y estamos aquí para ayudarte en ese camino.
+                
+                <h3 style="text-align: center;">Nuestro Equipo</h3>
+                
+                En NutriScan, contamos con un equipo multidisciplinario de expertos en nutrición, científicos de datos, y desarrolladores de software. Nuestro equipo combina conocimientos especializados en nutrición con tecnología de vanguardia para ofrecerte una experiencia única y personalizada.
+                
+                <h3 style="text-align: center;">Visión</h3>
+                
+                Nuestra visión es revolucionar la forma en que las personas se relacionan con la comida. Queremos empoderarte para que tomes decisiones informadas sobre tu alimentación, te sientas seguro/a en tus elecciones y logres tus metas de salud y bienestar.
+                
+                <h3 style="text-align: center;">Únete a Nosotros</h3>
+                
+                Únete a la revolución de la alimentación saludable con NutriScan. Descarga nuestra aplicación y descubre cómo podemos ayudarte a alcanzar tus objetivos de salud y bienestar. ¡Juntos, podemos hacer una diferencia en tu vida y en el mundo que nos rodea!
+            </p>
+            
+            <button onclick="goBack()">Regresar a la página principal</button>
+        </section>
+        <section id="Recursos de Salud" class="category" style="display: none;"> 
+            <h2 style="text-align: center;">Recursos de Salud</h2>
+            <p>
+                En NutriScan, no solo nos preocupamos por brindarte herramientas para mejorar tu alimentación, sino que también queremos ofrecerte recursos adicionales para que puedas cuidar de tu salud de manera integral. Explora nuestros recursos de salud para encontrar información útil y consejos prácticos sobre una variedad de temas relacionados con el bienestar.
+
+                <h3 style="text-align: center;">Artículos Informativos</h3>
+Sumérgete en nuestra colección de artículos informativos escritos por expertos en nutrición y salud. Encuentra consejos sobre cómo mantener una dieta equilibrada, cómo interpretar etiquetas de alimentos, cómo planificar comidas saludables y mucho más.
+
+<h3 style="text-align: center;">Recetas Saludables</h3>
+Descubre deliciosas y nutritivas recetas diseñadas para satisfacer tus papilas gustativas y tus necesidades nutricionales. Desde desayunos energéticos hasta cenas reconfortantes, nuestras recetas saludables te ayudarán a mantener una alimentación variada y deliciosa.
+
+<h3 style="text-align: center;">Enlaces Útiles</h3>
+Explora una selección de enlaces a recursos externos confiables sobre salud y bienestar. Desde sitios web de organizaciones de salud reconocidas hasta aplicaciones móviles útiles, encontrarás una variedad de herramientas que complementarán tu viaje hacia un estilo de vida más saludable.
+
+<h3 style="text-align: center;">Consejos de Estilo de Vida</h3>
+Obtén consejos prácticos sobre cómo incorporar hábitos saludables en tu vida diaria. Desde cómo manejar el estrés hasta cómo mejorar la calidad del sueño, nuestros consejos de estilo de vida te ayudarán a abordar todos los aspectos de tu bienestar.
+
+<h3 style="text-align: center;">¡Más por Venir!</h3>
+Estamos constantemente actualizando nuestra colección de recursos de salud para brindarte la información más relevante y actualizada. ¡Mantente atento/a a nuevas incorporaciones y descubre todo lo que NutriScan tiene para ofrecerte!
+            </p>
+            
+
+            <button onclick="goBack()">Regresar a la página principal</button>
+        </section>
+        <section id="Contacto" class="category" style="display: none;">
+            <h2 style="text-align: center;">Contacto</h2>
+            <div>
+                <p><span style="color: #ffffff;">Contactanos por WhatsApp:</span></p>
+                <a href="https://wa.me/5525338668" target="_blank">WhatsApp</a>
+                <p><span style="color: #ffffff;">Encuéntranos en Facebook:</span></p>
+            <a href="https://www.facebook.com/profile.php?id=100083019266918" target="_blank">Facebook</a>
+            <p><span style="color: #ffffff;">Encuéntranos en Instagram:</span></p>
+            <a href="https://www.instagram.com/3quetzalcoalt.gam/" target="_blank">Instagram</a>
+               <p>Para aclaraciones, envía un correo electrónico a: <a href="mailto:iglesiaseduardo65@gmail.com">iglesiaseduardo65@gmail.com</a></p>
+               <p>Nuestra ubicacion</p>
+               <p>Estado: <span id="status" class="cerrado">cerrado hoy</span></p>
+                <p>Horario</p>
+               <p>Sabados de 4:00 pm a 6:30 pm</p>
+               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1569.16366354452!2d-98.88550996729175!3d19.520637196323623!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e636a1a08e45%3A0xb5bf171f576de5f3!2sUnidad%20Deportiva%20Silverio%20P%C3%A9rez!5e0!3m2!1ses-419!2smx!4v1691460699211!5m2!1ses-419!2smx" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          
+            </div>
+            <button onclick="goBack()">Regresar a la página principal</button>
+        </section>
+
+        <section id="Compras" class="category" style="display: none;">
+            <h2 style="text-align: center;">Compras</h2>
+            <div id="cart">
+                <ul id="cart-items">
+                    
+                </ul>
+                <p class="total">Total: $<span id="cart-total">0.00</span></p>
+                <button id="clear-cart">Vaciar carrito</button>
+                <button id="buy-cart">Comprar carrito</button>
+            </div>
+            <button onclick="goBack()">Regresar a la página principal</button>
+        </section>
+    </main>
+    <footer>
+        <p>Síguenos en nuestras redes sociales:</p>
+        <ul>
+            <a href="https://wa.me/5525338668">WhatsAPP</a>
+           <a href="https://www.facebook.com/eduardo.iglesias.31337194">Facebook</a>
+          
+        </ul>
+    </footer>
+
+    <script>
+        // Función para regresar a la página principal
+        function goBack() {
+            document.getElementById('company-info').style.display = 'block'; // Muestra la información de la empresa
+            document.querySelectorAll('.category').forEach(section => {
+                section.style.display = 'none'; // Oculta todas las secciones de productos
+            });
+        }
+
+        // Mostrar u ocultar secciones según la categoría seleccionada
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const category = link.getAttribute('data-category');
+                document.getElementById('company-info').style.display = 'none'; // Oculta la información de la empresa
+                document.querySelectorAll('.category').forEach(section => {
+                    if (section.id === category) {
+                        section.style.display = 'block'; // Muestra la sección de la categoría seleccionada
+                    } else {
+                        section.style.display = 'none'; // Oculta las demás secciones de productos
+                    }
+                });
+            });
+        });
+
+        // Agregar producto al carrito
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = {
+                    name: button.parentElement.querySelector('img').alt,
+                    price: parseFloat(button.parentElement.querySelector('p:nth-of-type(2)').textContent.replace('Precio: $', '')),
+                };
+                addToCart(product);
+            });
+        });
+
+        // Función para agregar un producto al carrito
+        function addToCart(product) {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            // Crear elemento de lista para el producto
+            const item = document.createElement('li');
+            item.textContent = `${product.name} - $${product.price.toFixed(2)}`;
+            cartItems.appendChild(item);
+
+            // Actualizar el total del carrito
+            let total = parseFloat(cartTotal.textContent);
+            total += product.price;
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        // Vaciar carrito
+        document.getElementById('clear-cart').addEventListener('click', () => {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            // Eliminar todos los elementos del carrito
+            while (cartItems.firstChild) {
+                cartItems.removeChild(cartItems.firstChild);
+            }
+
+            // Restablecer el total del carrito a 0
+            cartTotal.textContent = '0.00';
+        });
+
+        // Comprar carrito
+        document.getElementById('buy-cart').addEventListener('click', () => {
+            const cartItems = document.getElementById('cart-items');
+            if (cartItems.children.length === 0) {
+                alert('No hay productos en el carrito. Acción inválida.');
+            } else {
+                
+                alert('Compra realizada con éxito. ¡Gracias por tu compra!');
+                
+                document.getElementById('clear-cart').click();
+            }
+        });
+        
+    // Función para filtrar productos según el término de búsqueda
+    function searchProducts() {
+            const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const productName = product.querySelector('img').alt.toLowerCase();
+                const productDescription = product.querySelector('p').textContent.toLowerCase();
+                if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
+                    product.style.display = 'block'; // Mostrar productos que coinciden
+                } else {
+                    product.style.display = 'none'; // Ocultar productos que no coinciden
+                }
+            });
+        }
+
+        // Evento para activar la búsqueda mientras el usuario escribe
+        document.getElementById('search-input').addEventListener('input', searchProducts);
+
+
+        // Función para regresar a la página principal
+        function goBack() {
+            document.getElementById('company-info').style.display = 'block'; // Muestra la información de la empresa
+            document.querySelectorAll('.category').forEach(section => {
+                section.style.display = 'none'; // Oculta todas las secciones de productos
+            });
+        }
+
+        // Mostrar u ocultar secciones según la categoría seleccionada
+        document.querySelectorAll('.category-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const category = link.getAttribute('data-category');
+                document.getElementById('company-info').style.display = 'none'; // Oculta la información de la empresa
+                document.querySelectorAll('.category').forEach(section => {
+                    if (section.id === category) {
+                        section.style.display = 'block'; // Muestra la sección de la categoría seleccionada
+                    } else {
+                        section.style.display = 'none'; // Oculta las demás secciones de productos
+                    }
+                });
+            });
+        });
+         // Horario e informacion de contacto 
+         function getDayAndTime() {
+        const now = new Date();
+        const day = now.toLocaleDateString('es-ES', { weekday: 'long' }).toLowerCase();
+        const time = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+        return `${day}-${time}`;
+    }
+
+   
+    function checkOpenStatus() {
+        const openDaysAndHours = {
+            'lunes': ['9:00', '20:00'],
+            'martes': ['9:00', '20:00'],
+            'miércoles': ['9:00', '20:00'],
+            'jueves': ['9:00', '20:00'],
+            'viernes': ['9:00', '20:00'],
+            'sábado': ['10:00', '14:00'],
+            'domingo': ['cerrado', 'cerrado'], // cerrado
+        };
+
+        const currentDayAndTime = getDayAndTime();
+        const currentDay = currentDayAndTime.split('-')[0];
+        const currentTime = currentDayAndTime.split('-')[1];
+
+        const openTime = openDaysAndHours[currentDay][0];
+        const closeTime = openDaysAndHours[currentDay][1];
+
+        const timeRemaining = getTimeRemaining(currentTime, closeTime);
+
+        if (currentTime >= openTime && currentTime <= closeTime) {
+            return `Abierto hoy (${currentDay})`;
+        } else if (timeRemaining !== null && timeRemaining <= 30) {
+            return `Cerrará pronto (${timeRemaining} min) hoy (${currentDay})`;
+        } else {
+            return `Cerrado hoy (${currentDay})`;
+        }
+    }
+
+    
+    function getTimeRemaining(currentTime, closeTime) {
+        if (closeTime === 'cerrado') {
+            return null;
+        }
+
+        const currentTimeInMinutes = convertTimeToMinutes(currentTime);
+        const closeTimeInMinutes = convertTimeToMinutes(closeTime);
+
+        if (closeTimeInMinutes >= currentTimeInMinutes) {
+            return closeTimeInMinutes - currentTimeInMinutes;
+        } else {
+           
+            return closeTimeInMinutes + (24 * 60) - currentTimeInMinutes;
+        }
+    }
+
+   
+    function convertTimeToMinutes(time) {
+        const [hours, minutes] = time.split(':').map(Number);
+        return hours * 60 + minutes;
+    }
+
+    
+    function displayOpenStatus() {
+        const statusElement = document.getElementById('status');
+        statusElement.textContent = checkOpenStatus();
+    }
+
+    displayOpenStatus();
+    
+
+
+
+    </script>
+</body>
+</html>
